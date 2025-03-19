@@ -66,7 +66,7 @@ def groupme_callback():
         message_text = data.get("text", "")
         print(f"@{sender_name}, you said: {message_text}")
         for word in bannedWords:
-            if message_text.find(word)!=-1: 
+            if message_text.lower().find(word)!=-1: 
                     delete = requests.delete(groupMeUrl+"/conversations/"+groupId+"/messages/"+message_id+token)
                     if delete.status_code == 204:
                         send_deletion_email(message_text, word)
