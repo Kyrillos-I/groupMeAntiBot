@@ -11,6 +11,8 @@ groupMeUrl = "https://api.groupme.com/v3"
 token = "?token="+groupMeToken
 response = requests.get(groupMeUrl+"/groups"+token)
 
+
+
 if response.status_code == 200: 
     data=response.json()
     # Extract group name and ID
