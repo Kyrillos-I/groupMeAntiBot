@@ -5,6 +5,7 @@ load_dotenv()
 
 groupMeToken = os.getenv("GROUPME_ACCESS_TOKEN")
 groupId = os.getenv("GROUP_ID")
+botId = os.getenv("BOT_ID")
 
 groupMeUrl = "https://api.groupme.com/v3"
 token = "?token="+groupMeToken
@@ -29,7 +30,46 @@ if messages.status_code == 200:
             if delete.status_code == 204:
                 print("Succesful deletion")
             else: 
-                print("Error: {delete.status_code}")
+                print(f"Error: {delete.status_code}")
 
 else: 
     print(f"Error: {messages.status_code}")
+"""
+botData = {
+    "bot": {
+		"name": "AntiSpam",
+		"group_id": ""+groupId,
+	} 
+}
+bot = requests.post(groupMeUrl+"/bots"+token, json=botData)
+if bot.status_code == 201: 
+    print("Bot Deployment Succesful!")
+else: 
+    print(f"Bot Deployment Failed! Error: {bot.status_code}")
+
+
+index = requests.get(groupMeUrl+"/bots"+token)
+if index.status_code == 200:
+    data = index.json()
+    print(data)
+else :
+    print(f"Error: {index.status_code}")
+
+botMsg = {
+    "bot_id": botId,
+    "text": "Hello, I am here to auto delete spam/scam messages!"
+}
+
+send = requests.post(groupMeUrl+"/bots/post"+token, json = botMsg)
+if send.status_code == 202:
+    print("Success! Message sent!")
+else: 
+    print(f"Message failed. Error {send.status_code}")
+
+"""
+botDelete = {"bot_id": botId}
+delete = requests.post(groupMeUrl+"/bots/destroy"+token, json  = botDelete)
+if delete.status_code == 200:
+    print("Bot deleted succesfully!")
+else:
+    print(f"Error deleting bot {delete.status_code}")
