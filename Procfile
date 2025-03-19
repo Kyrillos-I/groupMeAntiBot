@@ -1,1 +1,1 @@
-web: gunicorn app:delete
+web: gunicorn delete:app
