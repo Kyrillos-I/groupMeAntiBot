@@ -24,13 +24,15 @@ def groupme_callback():
     if data:
         sender_name = data.get("name", "Unknown")
         sender_id = data.get("sender_id")
+        message_id = data.get("id")
         message_text = data.get("text", "")
-
-        # Ignore messages sent by the bot itself
-        if sender_id == botId:
-            return jsonify({"status": "ignored"}), 200
-        
-    print(f"@{sender_name}, you said: {message_text}")
+        print(f"@{sender_name}, you said: {message_text}")
+        if message_text.find("tickets")!=-1: 
+                delete = requests.delete(groupMeUrl+"/conversations/"+groupId+"/messages/"+message_id+token)
+                if delete.status_code == 204:
+                    print("Succesful deletion")
+                else: 
+                    print(f"Error: {delete.status_code}")
     return jsonify({"status": "ok"}), 200
 
 if __name__ == "__main__":

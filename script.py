@@ -34,11 +34,11 @@ if messages.status_code == 200:
 
 else: 
     print(f"Error: {messages.status_code}")
-"""
 botData = {
     "bot": {
 		"name": "AntiSpam",
 		"group_id": ""+groupId,
+        "callback_url": "https://web-production-5dfdf.up.railway.app/"
 	} 
 }
 bot = requests.post(groupMeUrl+"/bots"+token, json=botData)
@@ -65,11 +65,12 @@ if send.status_code == 202:
     print("Success! Message sent!")
 else: 
     print(f"Message failed. Error {send.status_code}")
-
 """
+
 botDelete = {"bot_id": botId}
 delete = requests.post(groupMeUrl+"/bots/destroy"+token, json  = botDelete)
 if delete.status_code == 200:
     print("Bot deleted succesfully!")
 else:
     print(f"Error deleting bot {delete.status_code}")
+"""
