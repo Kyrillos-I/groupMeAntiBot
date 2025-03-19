@@ -36,6 +36,8 @@ if messages.status_code == 200:
 
 else: 
     print(f"Error: {messages.status_code}")
+
+"""
 botData = {
     "bot": {
 		"name": "AntiSpam",
@@ -67,7 +69,7 @@ if send.status_code == 202:
     print("Success! Message sent!")
 else: 
     print(f"Message failed. Error {send.status_code}")
-"""
+
 
 botDelete = {"bot_id": botId}
 delete = requests.post(groupMeUrl+"/bots/destroy"+token, json  = botDelete)
