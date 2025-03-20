@@ -37,7 +37,7 @@ if messages.status_code == 200:
 else: 
     print(f"Error: {messages.status_code}")
 
-"""
+
 botData = {
     "bot": {
 		"name": "AntiSpam",
@@ -59,6 +59,7 @@ if index.status_code == 200:
 else :
     print(f"Error: {index.status_code}")
 
+"""
 botMsg = {
     "bot_id": botId,
     "text": "Hello, I am here to auto delete spam/scam messages!"

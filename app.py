@@ -21,12 +21,12 @@ GROUPME_POST_URL = groupMeUrl+"/bots/post"
 
 bannedWords = [
     'tickets', 'ticket',
-    'free', 'win', 'winner', 'prize', 'claim',
+    'claim',
     'offer', 'promo', 'promotion',
     'lottery', 'cash',
     'bitcoin', 'crypto', 'cryptocurrency',
-    'urgent', 'act now', 'click here', 'guaranteed',
-    'gift', 'bonus', 'investment'
+    'urgent', 'act now', 'guaranteed',
+    'bonus', 'investment'
 ]
 
 def send_deletion_email(deleted_message, bannedWord):
